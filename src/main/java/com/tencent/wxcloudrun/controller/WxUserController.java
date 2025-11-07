@@ -5,7 +5,7 @@ import com.tencent.wxcloudrun.dto.WxLoginDTO;
 import com.tencent.wxcloudrun.dto.WxUser;
 import com.tencent.wxcloudrun.service.WxUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.json.JSONException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

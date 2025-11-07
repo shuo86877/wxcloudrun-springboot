@@ -1,6 +1,6 @@
 server:
-  port: 80
-#  port: ${PORT:8080}
+#  port: 80
+  port: ${PORT:8080}
 rent:
   oss:
     access-key: "EdZE04QMFz_sQGYKFUl6expkzHAWBlhYnfK-gL8P"

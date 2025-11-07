@@ -9,8 +9,8 @@ import com.tencent.wxcloudrun.dto.WxUser;
 import com.tencent.wxcloudrun.service.WxUserService;
 import com.tencent.wxcloudrun.dao.WxUserMapper;
 import com.tencent.wxcloudrun.util.WxPhoneDecryptUtil;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

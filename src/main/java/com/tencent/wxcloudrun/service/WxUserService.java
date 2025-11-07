@@ -3,7 +3,7 @@ package com.tencent.wxcloudrun.service;
 import com.tencent.wxcloudrun.dto.WxLoginDTO;
 import com.tencent.wxcloudrun.dto.WxUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.json.JSONException;
 
 /**
 * @author shuo
