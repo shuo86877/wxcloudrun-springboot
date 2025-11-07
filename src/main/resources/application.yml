@@ -17,7 +17,8 @@ rent:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sh-cynosdbmysql-grp-c6jgmsik.sql.tencentcdb.com:20167/springboot_demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&tcpKeepAlive=true
+#    url: jdbc:mysql://sh-cynosdbmysql-grp-c6jgmsik.sql.tencentcdb.com:20167/springboot_demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&tcpKeepAlive=true
+    url: jdbc:mysql://${10.18.105.70}/${3306:springboot_demo}
     username: root
     password: Cgs8fu5q
     hikari:
