@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "wechat",
+      "type": "com.tencent.wxcloudrun.config.WxConfig",
+      "sourceType": "com.tencent.wxcloudrun.config.WxConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wechat.app-id",
+      "type": "java.lang.String",
+      "description": "小程序 AppID",
+      "sourceType": "com.tencent.wxcloudrun.config.WxConfig"
+    },
+    {
+      "name": "wechat.secret",
+      "type": "java.lang.String",
+      "description": "小程序 AppSecret",
+      "sourceType": "com.tencent.wxcloudrun.config.WxConfig"
+    }
+  ],
+  "hints": []
+}
