@@ -48,6 +48,14 @@ tencent:
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
 
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted        # 实体字段名
+      logic-delete-value: 1                # 删除时标记为 1
+      logic-not-delete-value: 0            # 未删除标记为 0
+
+
 wechat:
   appid: wx0b311ec509dfac3b
   secret: 2f1b7c32b31a603da200e6bf8664d109

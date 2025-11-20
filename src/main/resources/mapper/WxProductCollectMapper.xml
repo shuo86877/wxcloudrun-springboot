@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.wxcloudrun.dao.WxProductCollectMapper">
+
+    <resultMap id="BaseResultMap" type="com.tencent.wxcloudrun.dto.WxProductCollect">
+            <id property="id" column="id" />
+            <result property="productId" column="product_id" />
+            <result property="userId" column="user_id" />
+            <result property="createTime" column="create_time" />
+            <result property="productCount" column="product_count" />
+            <result property="updateTime" column="update_time" />
+
+        <!-- 嵌套映射商品信息 -->
+        <association property="wxProduct" javaType="com.tencent.wxcloudrun.dto.WxProduct">
+            <id property="id" column="p_id"/>
+            <result property="name" column="name"/>
+            <result property="price" column="price"/>
+            <result property="originalPrice" column="original_price"/>
+            <result property="recommend" column="recommend"/>
+            <result property="detailTheme" column="detail_theme"/>
+            <result property="type" column="type"/>
+            <result property="images" column="images"/>
+            <result property="unsubscribeRule" column="unsubscribe_rule"/>
+            <result property="validDate" column="valid_date"/>
+            <result property="useRule" column="use_rule"/>
+            <result property="tips" column="tips"/>
+            <result property="otherRecommend" column="other_recommend"/>
+            <result property="serviceDesc" column="service_desc"/>
+            <result property="createBy" column="create_by"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="createTime" column="p_create_time"/>
+            <result property="updateTime" column="p_update_time"/>
+            <result property="sellAddress" column="sell_address"/>
+            <result property="hotelName" column="hotel_name"/>
+            <result property="hotelCategoryType" column="hotel_category_type"/>
+            <result property="sliderImage" column="slider_image"/>
+            <result property="invalidDate" column="invalid_date"/>
+            <result property="availableDate" column="available_date"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,product_id,user_id,create_time,product_count,update_time
+    </sql>
+
+    <!-- 联表分页查询 -->
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT
+            c.id,
+            c.product_id,
+            c.user_id,
+            c.product_count,
+            c.create_time,
+            c.update_time,
+            p.id AS p_id,
+            p.name,
+            p.price,
+            p.original_price,
+            p.recommend,
+            p.detail_theme,
+            p.type,
+            p.images,
+            p.unsubscribe_rule,
+            p.valid_date,
+            p.use_rule,
+            p.tips,
+            p.other_recommend,
+            p.service_desc,
+            p.create_by,
+            p.update_by,
+            p.create_time AS p_create_time,
+            p.update_time AS p_update_time,
+            p.sell_address,
+            p.hotel_name,
+            p.hotel_category_type,
+            p.slider_image,
+            p.invalid_date,
+            p.available_date
+        FROM wx_product_collect c
+                 LEFT JOIN wx_product p ON c.product_id = p.id
+        WHERE c.user_id = #{userId}
+        ORDER BY c.create_time DESC
+    </select>
+
+    <select id="selectByIdsAndUserId" resultMap="BaseResultMap">
+        SELECT
+        c.id,
+        c.product_id,
+        c.user_id,
+        c.product_count,
+        c.create_time,
+        c.update_time,
+
+        p.id AS p_id,
+        p.name,
+        p.price,
+        p.original_price,
+        p.recommend,
+        p.detail_theme,
+        p.type,
+        p.images,
+        p.unsubscribe_rule,
+        p.valid_date,
+        p.use_rule,
+        p.tips,
+        p.other_recommend,
+        p.service_desc,
+        p.create_by,
+        p.update_by,
+        p.create_time AS p_create_time,
+        p.update_time AS p_update_time,
+        p.sell_address,
+        p.hotel_name,
+        p.hotel_category_type,
+        p.slider_image,
+        p.invalid_date,
+        p.available_date
+
+        FROM wx_product_collect c
+        LEFT JOIN wx_product p ON p.id = c.product_id
+        WHERE c.is_deleted = 0
+        AND c.user_id = #{userId}
+        AND c.id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        ORDER BY c.create_time DESC
+    </select>
+</mapper>
